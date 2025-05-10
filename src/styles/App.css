@@ -1,0 +1,505 @@
+/**
+ * Global styles for the game application interface.
+ * 
+ * The styles are organized to create a split-screen layout with:
+ * - Top half: Game canvas container
+ * - Bottom half: Game controls and information
+ * 
+ * @file Styles for the game application layout and components
+ * @module AppStyles
+ */
+
+/* ==========================================================================
+   Base & Global Styles
+   ========================================================================== */
+
+   :root {
+    line-height: 1.5;
+    font-weight: 400;
+    --color-scheme-earthy: light dark; 
+    --color-earthy-text: #FFBF00; 
+    --color-earthy-background: #000000; 
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-color: var(--color-earthy-background);
+    color: var(--color-earthy-text);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  canvas {
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+  
+  /* ==========================================================================
+     Main Layout Containers
+     ========================================================================== */
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #gameContainer,
+  #gameContainer > canvas {
+    /* Specific Phaser container and its canvas */
+    position: static !important;
+    z-index: 1000;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    overflow: hidden !important;
+    min-height: 2px !important;
+    width: 100vw !important;
+    height: 50vh !important;
+    justify-content: start;
+    align-items: start;
+  }
+  
+  .game-controls {
+    /* Bottom half: Main panel for game controls */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: rgba(64, 64, 64, 0.8);
+    color: #FFBF00;
+    overflow-x: hidden;
+    overflow-y: scroll !important;
+    height: 50vh !important;
+    box-sizing: border-box;
+  }
+  
+  .user-controls {
+    margin-top: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1vw;
+    width: 100%;
+  }
+  
+  /* ==========================================================================
+     General UI Components & Utilities
+     ========================================================================== */
+  
+  .divider-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .divider-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: white;
+  }
+  
+  .divider-container-submenu {
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+  }
+  
+  .divider-line-submenu {
+    flex-grow: 1;
+    height: 1px;
+    background-color: rgb(225, 137, 13);
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .divider-text {
+    padding: 0 10px;
+    font-weight: bold;
+    color: lightskyblue;
+  }
+  
+  .button-right {
+    margin-right: 1vw;
+  }
+  
+  .game-card {
+    width: auto;
+    margin: auto;
+    margin-bottom: 0;
+  }
+  
+  .game-box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .game-box {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: calc(50% - 10px);
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    overflow-x: auto;
+  }
+  
+  .game-controls-title {
+    display: block;
+    color: #FFBF00;
+    text-align: center;
+    margin: 0;
+    padding: 1rem 0 1rem 0;
+  }
+  
+  
+  /* ==========================================================================
+     Component Block: Audio Controls 
+     (Originally src/styles/AudioControls.css)
+     ========================================================================== */
+  
+  .audio-controls-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+  }
+  
+  .audio-control {
+    padding: 0.75rem;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+  }
+  
+  .audio-control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .audio-control-sounds {
+    border-left: 5px solid #ff9900;
+  }
+  
+  .audio-control-music {
+    border-left: 5px solid #3399ff;
+  }
+  
+  .audio-control-ambience {
+    border-left: 5px solid #66cc66;
+  }
+  
+  .audio-control-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .audio-toggle-btn,
+  .audio-settings-btn,
+  .audio-mute-btn,
+  .test-sound-btn {
+    margin: 0 0.25rem;
+    transition: all 0.2s ease;
+  }
+  
+  .audio-toggle-btn:hover,
+  .audio-settings-btn:hover,
+  .audio-mute-btn:hover, 
+  .test-sound-btn:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Movement/Actions might be related to AudioControls context or separate */
+  .movement-interface-container {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+  
+  .movement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(3, 60px);
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  .movement-button {
+    width: 100%;
+    height: 100%;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: #3f51b5;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .movement-button:hover {
+    background-color: #303f9f;
+    transform: scale(1.05);
+  }
+  
+  .actions-interface-container {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+  
+  .actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .action-button {
+    padding: 0.75rem;
+    background-color: #4caf50; /* Note: Same class name as market action buttons */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+  
+  .action-button:hover {
+    background-color: #388e3c;
+    transform: scale(1.05);
+  }
+  
+  /* ==========================================================================
+     Component Block: Phaser Game Specific
+     (Originally src/styles/PhaserGame.css & src/styles/Game.css)
+     ========================================================================== */
+  
+  .phaser-game-wrapper {
+    position: relative;
+    width: 100%;
+    z-index: 30; /* Ensure game canvas area is interactive */
+  }
+  
+  .game-component {
+    position: relative;
+    z-index: 20;
+  }
+  
+  .game-error {
+    padding: 20px;
+    background-color: #ffdddd;
+    color: #990000;
+    border: 1px solid #990000;
+    border-radius: 4px;
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  .game-loading {
+    /* Note: Separate loading styles also exist */
+    padding: 20px;
+    background-color: #f0f0f0;
+    color: #666;
+    border-radius: 4px;
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  .game-start {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .start-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .start-button:hover {
+    background-color: #45a049;
+  }
+  
+  
+  /* ==========================================================================
+     Component Block: Loading Indicator
+     ========================================================================== */
+  
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Light background */
+    color: #333; /* Dark text */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: fixed; /* Changed from absolute for viewport centering */
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000; /* Ensure loading is on top of everything */
+  }
+  
+  .loading-spinner {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 16px;
+  }
+  
+  .loading-spinner-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #4a90e2; /* Spinner color */
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .loading-message {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }
+  
+  /* Small size */
+  .loading-small .loading-spinner { width: 30px; height: 30px; }
+  .loading-small .loading-spinner-inner { border-width: 3px; }
+  .loading-small .loading-message { font-size: 14px; }
+  
+  /* Large size */
+  .loading-large .loading-spinner { width: 80px; height: 80px; }
+  .loading-large .loading-spinner-inner { border-width: 6px; }
+  .loading-large .loading-message { font-size: 18px; }
+  
+  /* Styles for the CustomLoader component in Game.jsx */
+  .custom-loader-bar {
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  /* --- Error Notification Card --- */
+  .game-card.error-notification-card {
+    border-color: #dc3545; /* Red border */
+    background-color: #f8d7da; /* Light red background */
+  }
+  
+  .error-notification-body {
+    padding: 0.5rem; /* Smaller padding */
+  }
+  
+  .error-title {
+    color: #721c24; /* Darker red for title */
+    font-weight: bold;
+  }
+  
+  /* Flashing Animation */
+  @keyframes flash-error {
+    0%, 100% { background-color: #f8d7da; opacity: 1; }
+    50% { background-color: #f8d7da; opacity: 0.6; }
+  }
+  
+  .flashing-error {
+    color: #721c24; /* Darker red text */
+    font-weight: bold;
+    animation: flash-error 1s infinite;
+    text-align: center;
+    margin: auto;
+  }
+  
+  /* ==========================================================================
+     Special Animations
+     ========================================================================== */
+  
+  @keyframes rainbowStrobe {
+    0%   { background-color: red; }
+    16.6% { background-color: orange; }
+    33.3% { background-color: yellow; }
+    50%  { background-color: green; }
+    66.6% { background-color: blue; }
+    83.3% { background-color: indigo; }
+    100% { background-color: violet; }
+  }
+  
+  .rainbow-strobe-effect {
+    animation: rainbowStrobe 10s infinite linear;
+    /* Ensure text remains visible */
+    color: black !important; /* Or choose a contrasting color */
+  }
+  
+  @keyframes greenSelectionPulse {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(0, 255, 0, 0.25); /* Light green glow */
+      background-color: rgba(0, 255, 0, 0.243); /* Stronger green glow */
+      color: rgba(255, 255, 255, 0.5); /* Use default text color */
+    }
+    50% {
+      box-shadow: 0 0 15px 5px rgb(0, 255, 0, 0.25); /* Stronger green glow */
+      background-color: rgba(0, 255, 0, 0.25); /* Stronger green glow */
+      color: #1aff00; /* Very dark grey/near black for contrast */
+    }
+  }
+  @keyframes greenSelectionPulseText {
+    0%, 50% {
+      color: rgb(0, 255, 38); /* Use default text color */
+    }
+    25%, 75% {
+      color: inherit;
+    }
+  }
+  
+  .green-selection-pulse-text {
+    animation: greenPulseText 1.5s infinite ease-in-out;
+  }
+  
+  .green-selection-pulse {
+    animation: greenSelectionPulse 2s infinite cubic-bezier(0.06, 0.78, 0.23, 0.82);
+  }
+  
+  /* Hover effect for clickable cards */
+  .clickable:hover {
+    cursor: pointer;
+    background-color: cyan !important; /* Use !important to override potential inline or specific styles */
+    transition: background-color 0.2s ease-in-out; /* Add a smooth transition */
+  } 

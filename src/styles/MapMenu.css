@@ -1,0 +1,110 @@
+/* CSS styles extracted from MapMenu.jsx */
+
+@keyframes colorCycle {
+  0%   { background-color: #28a745; border-color: #28a745; } /* Green */
+  20%  { background-color: #007bff; border-color: #007bff; } /* Blue */
+  40%  { background-color: #6f42c1; border-color: #6f42c1; } /* Purple */
+  60%  { background-color: #fd7e14; border-color: #fd7e14; } /* Orange */
+  80%  { background-color: #dc3545; border-color: #dc3545; } /* Red */
+  100% { background-color: #28a745; border-color: #28a745; } /* Back to Green */
+}
+
+@keyframes colorCycleReverse {
+  0%   { background-color: #28a745; border-color: #28a745; } /* Green */
+  20%  { background-color: #dc3545; border-color: #dc3545; } /* Red */
+  40%  { background-color: #fd7e14; border-color: #fd7e14; } /* Orange */
+  60%  { background-color: #6f42c1; border-color: #6f42c1; } /* Purple */
+  80%  { background-color: #007bff; border-color: #007bff; } /* Blue */
+  100% { background-color: #28a745; border-color: #28a745; } /* Back to Green */
+}
+
+/* Normal speed, forward cycle */
+.map-button-cycling {
+  animation: colorCycle 5s linear infinite;
+}
+
+/* Slow speed, reverse cycle (for when map is open) */
+.map-button-cycling-reverse-slow {
+  animation: colorCycleReverse 50s linear infinite; /* 10x slower */
+}
+
+/* Style for selected map item */
+.map-list-item.active {
+  background-color: #0d6efd; /* Bootstrap primary blue */
+  color: #ffffff; /* White text for contrast */
+  border-color: #0d6efd; /* Match background */
+}
+
+.map-list-item.active:hover {
+  background-color: #0b5ed7; /* Darker blue on hover */
+  border-color: #0a58ca;
+  color: #ffffff;
+}
+
+/* Make list items focusable and clickable */
+.map-list-item {
+  cursor: pointer;
+  background-color: #ffffff; /* White background */
+  color: #212529; /* Default dark text */
+  border: none; /* Remove default borders */
+  border-bottom: 1px solid #dee2e6; /* Add subtle bottom border for separation */
+  padding-top: 0.75rem; /* Add some padding */
+  padding-bottom: 0.75rem;
+  transition: background-color 0.15s ease-in-out; /* Smooth hover transition */
+}
+
+/* Remove bottom border from the last item */
+.map-list-item:last-child {
+  border-bottom: none;
+}
+
+.map-list-item:hover {
+  background-color: #f8f9fa; /* Light grey on hover */
+  color: #212529;
+}
+
+.map-list-item:focus {
+  outline: 2px solid #86b7fe; /* Lighter blue focus outline (Bootstrap style) */
+  outline-offset: 1px;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Bootstrap focus shadow */
+  z-index: 1; /* Ensure focus outline is visible */
+  position: relative; /* Needed for z-index */
+}
+
+/* Ensure active item focus state looks good too */
+.map-list-item.active:focus {
+  outline-color: #ffffff; /* White outline on blue background */
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.5); /* White focus shadow */
+}
+
+/* Styling for the favorite map item */
+.map-list-item.favorite-map {
+  background-color: var(--bs-success-bg-subtle); /* Use Bootstrap subtle success background */
+  color: var(--bs-success-text-emphasis); /* Use Bootstrap success text color */
+  border-left: 4px solid var(--bs-success); /* Add a distinct left border */
+}
+
+.map-list-item.favorite-map:hover,
+.map-list-item.favorite-map:focus {
+  background-color: var(--bs-success); /* Darker success on hover/focus */
+  color: var(--bs-light); /* Light text on hover */
+}
+
+.map-list-item.active.favorite-map {
+  /* Ensure selected favorite has distinct styling if needed */
+  /* Example: override background or add more emphasis */
+  background-color: var(--bs-success); /* Keep it the same as hover for consistency */
+  color: var(--bs-light);
+  border-color: var(--bs-dark); /* Maybe a darker border when selected */
+}
+
+/* Styles for the new Play button */
+.play-map-button {
+  font-family: 'Press Play', sans-serif; /* Ensure font is loaded */
+  /* Add basic transitions for smoother hover/focus */
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+  /* Example hover effect (adjust colors as needed) */
+}
+
+/* Add any other specific styles for elements within MapMenu */ 

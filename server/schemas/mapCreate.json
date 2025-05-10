@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MapCreateSchema",
+  "description": "Schema for validating the request body when creating a new map for a character.",
+  "type": "object",
+  "properties": {
+    "mapNickname": {
+      "description": "Optional initial nickname for the new map.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50,
+      "pattern": "^[a-zA-Z0-9 '_-]+$"
+    }
+  },
+  "additionalProperties": false,
+  "required": []
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "server/schemas/userUpdate.json",
+  "title": "User Update Schema",
+  "description": "Schema for validating updated user data",
+  "type": "object",
+  "properties": {
+    "password": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 20,
+      "description": "Password for the user being updated"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "minLength": 5,
+      "maxLength": 60,
+      "pattern": "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,})$",
+      "transform": ["toLowerCase"],
+      "description": "E-Mail for the user being registered"
+    }
+  },
+  "additionalProperties": false,
+  "required": []
+}

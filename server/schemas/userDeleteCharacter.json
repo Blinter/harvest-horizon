@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "server/schemas/userDeleteCharacter.json",
+  "title": "User Delete Character Schema",
+  "description": "Schema for validating Character ID used in deletion",
+  "type": "object",
+  "properties": {
+    "characterId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "ID of the character associated with the user"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["characterId"]
+}

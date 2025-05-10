@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "server/schemas/userCharacterChangeName.json",
+  "title": "User Character Change Name Schema",
+  "description": "Schema for validating Character ID and new Nickname",
+  "type": "object",
+  "properties": {
+    "characterId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "ID of the character associated with the user"
+    },
+    "newNickName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 25,
+      "description": "User-created label shown for the character"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["characterId", "newNickName"]
+}

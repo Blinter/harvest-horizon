@@ -1,0 +1,27 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules",
+    "dist",
+    "coverage",
+    "e2e-*",
+    ".vitest-*"
+  ],
+  "verbose": true,
+  "execMap": {
+    "js": "node"
+  },
+  "watch": [
+    "server/**/*.js",
+    "server.js"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js,json",
+  "delay": "500",
+  "events": {
+    "restart": "echo \"Nodemon restarting, running cleanup script...\" && node scripts/cleanup-processes-backend.js|| true"
+  }
+} 

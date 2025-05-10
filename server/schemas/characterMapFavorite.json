@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "server/schemas/characterMapFavorite.json",
+  "title": "Character Map Favorite Schema",
+  "description": "Schema for validating Map ID",
+  "type": "object",
+  "properties": {
+    "mapId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "ID of the Map associated with the character"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["mapId"]
+}

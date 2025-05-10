@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "server/schemas/characterItemsBuy.json",
+  "title": "Character Items Buy Schema",
+  "description": "Schema for validating character ID, item type, item name, and amount(s)",
+  "type": "object",
+  "properties": {
+    "characterId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "ID of the character"
+    },
+    "itemType": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 25,
+      "description": "User-defined item type to buy"
+    },
+    "itemName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 25,
+      "description": "User-defined item name to buy"
+    },
+    "quantity": {
+      "type": "integer",
+      "minLength": 1,
+      "maxLength": 1000,
+      "description": "User-defined quantity to buy"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["characterId", "itemType", "itemName", "quantity"]
+}

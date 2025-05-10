@@ -1,0 +1,26 @@
+/**
+ * Babel configuration for Jest testing environment.
+ *
+ * This configuration file sets up Babel for properly transforming modern
+ * JavaScript and React JSX syntax in test files. It includes necessary
+ * presets for environment targeting and React support, along with plugins
+ * for handling ES modules and special syntax features.
+ */
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "node": "current"
+      }
+    }],
+    ["@babel/preset-react", {
+      "runtime": "automatic"
+    }]
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-transform-json-modules",
+    "@babel/plugin-syntax-import-meta",
+    "@babel/plugin-syntax-jsx"
+  ]
+} 

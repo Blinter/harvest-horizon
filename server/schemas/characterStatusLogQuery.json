@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "characterId": {
+      "type": "string",
+      "description": "MongoDB ObjectId of the character",
+      "pattern": "^[0-9a-fA-F]{24}$"
+    },
+    "page": {
+      "type": "integer",
+      "description": "Page number for pagination",
+      "minimum": 1,
+      "default": 1
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Number of logs per page",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 25
+    }
+  },
+  "required": [
+    "characterId"
+  ],
+  "additionalProperties": false
+}

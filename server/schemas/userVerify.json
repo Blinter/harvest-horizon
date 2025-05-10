@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "server/schemas/userVerify.json",
+  "title": "User Verify Schema",
+  "description": "Schema for validating rate-limit challenges.",
+  "type": "object",
+  "properties": {
+    "verificationToken": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 25,
+      "description": "Verification Code that is displayed on the scene"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["verificationToken"]
+}
